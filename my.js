@@ -20,5 +20,8 @@ jQuery.fn.selectText = function(){
 $(document).ready(function() {
 	$('#result').click(function() {
         $(this).selectText();
+    });
+    $('#result-min').click(function() {
+        $(this).selectText();
     }); 
 });

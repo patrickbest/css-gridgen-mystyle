@@ -48,11 +48,8 @@
 		</section><!-- /main -->
 		
 		<section id="result">
-			<pre>
-			<?php	
-						if (!empty($cols) && !empty($colw) && !empty($gutter)) {
-
-echo '/* Grid of ' . $cols . ' ' . $colw . 'px columns with ' . $gutter . 'px gutter */';
+			<pre><?php	
+						if (!empty($cols) && !empty($colw) && !empty($gutter)) {echo '/* Grid of ' . $cols . ' ' . $colw . 'px columns with ' . $gutter . 'px gutter */';
 echo '<br/><br/>';
 
 						$containerwidth = ($colw * $cols)+($gutter * $cols);
@@ -69,9 +66,22 @@ echo '<br/><br/>';
 							echo '<br/><br/>';
 							}
 					}				
-			?>
-			
-			</pre>
+			?></pre>
+		</section>
+		
+		<section id="result-min">
+			<pre><?php	
+						if (!empty($cols) && !empty($colw) && !empty($gutter)) {echo '/* Grid of ' . $cols . ' ' . $colw . 'px columns with ' . $gutter . 'px gutter */<br/>';
+						$containerwidth = ($colw * $cols)+($gutter * $cols);
+						echo '.container{margin:0 auto;width:' . $containerwidth . 'px}';
+						echo '.row{clear:both;}';
+						echo '.col{float:left;margin-left:' . $gutter/2 . 'px;margin-right:' . $gutter/2 . 'px;}';
+						for ($i=1; $i<=$cols; $i++) {
+							$calculatedwidth = ($i*$colw)+(($i-1)*$gutter);
+							echo '.col' . $i . '{width: ' . $calculatedwidth . 'px;}';
+							}
+					}				
+			?></pre>
 		</section>
 		
 		
