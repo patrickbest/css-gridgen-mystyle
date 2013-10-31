@@ -28,9 +28,9 @@ section#form {
 	margin-top: 2em;
 }
 
-section#result, section#result-min {
+section#result, section#result-min, section#result-stylus {
 	margin-top: 2em;
-	max-height: 450px;
+	max-height: 250px;
 	overflow-y: scroll;
 }
 

@@ -8,7 +8,7 @@ jQuery.fn.selectText = function(){
         range.moveToElementText(element);
         range.select();
     } else if (window.getSelection) {
-        selection = window.getSelection();        
+        selection = window.getSelection();
         range = document.createRange();
         range.selectNodeContents(element);
         selection.removeAllRanges();
@@ -23,5 +23,8 @@ $(document).ready(function() {
     });
     $('#result-min').click(function() {
         $(this).selectText();
-    }); 
+    });
+    $('#result-stylus').click(function() {
+        $(this).selectText();
+    });
 });

@@ -7,7 +7,7 @@
 				}
 ?>
 
-<!DOCTYPE html>   
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -17,7 +17,7 @@
 	<meta name="author" content="">
 	<!-- !CSS -->
 	<link rel="stylesheet" href="css/style.css">
-	
+
 </head>
 <!-- !Body -->
 <body>
@@ -30,25 +30,25 @@
 		<header>
 			CSS Grids ~ MYSTYLE
 		</header><!-- /header -->
-		
+
 		<section id="form">
-			
+
 			<form action="index.php" method="get">
-				
+
 				Column Width:<br/>
 				<input name="colwidth" type="text" <?php if($result) { echo 'value="' . $colw . '"';}?>/><br/>
 				Number of Columns:<br/>
 				<input name="numbcols" type="text" <?php if($result) { echo 'value="' . $cols . '"';}?>/><br/>
 				Gutter:<br/>
 				<input name="gutter" type="text" <?php if($result) { echo 'value="' . $gutter . '"';}?>/><br/>
-				<input type="submit" />			
+				<input type="submit" />
 			</form>
-		
-		
+
+
 		</section><!-- /main -->
-		
+
 		<section id="result">
-			<pre><?php	
+			<pre><?php
 						if (!empty($cols) && !empty($colw) && !empty($gutter)) {echo '/* Grid of ' . $cols . ' ' . $colw . 'px columns with ' . $gutter . 'px gutter */';
 echo '<br/><br/>';
 
@@ -65,12 +65,12 @@ echo '<br/><br/>';
 							echo '.col' . $i . ' {<br/>width: ' . $calculatedwidth . 'px;<br/>}';
 							echo '<br/><br/>';
 							}
-					}				
+					}
 			?></pre>
 		</section>
-		
+
 		<section id="result-min">
-			<pre><?php	
+			<pre><?php
 						if (!empty($cols) && !empty($colw) && !empty($gutter)) {echo '/* Grid of ' . $cols . ' ' . $colw . 'px columns with ' . $gutter . 'px gutter */<br/>';
 						$containerwidth = ($colw * $cols)+($gutter * $cols);
 						echo '.container{margin:0 auto;width:' . $containerwidth . 'px}';
@@ -80,13 +80,37 @@ echo '<br/><br/>';
 							$calculatedwidth = ($i*$colw)+(($i-1)*$gutter);
 							echo '.col' . $i . '{width: ' . $calculatedwidth . 'px;}';
 							}
-					}				
+					}
 			?></pre>
 		</section>
-		
-		
+
+		<section id="result-stylus">
+			<pre><?php
+						if (!empty($cols) && !empty($colw) && !empty($gutter)) {echo '// Grid of ' . $cols . ' ' . $colw . 'px columns with ' . $gutter . 'px gutter<br/>';
+						$containerwidth = ($colw * $cols)+($gutter * $cols);
+						echo '$cols = ' . $cols . '<br/>';
+						echo '$col = ' . $colw . 'px<br/>';
+						echo '$gutter = ' . $gutter . 'px<br/>';
+						echo '.container<br/>';
+						echo '	margin:0 auto<br/>';
+						echo '	width: ($col * $cols)+($gutter * $cols)<br/>';
+						echo '.row<br/>';
+						echo '	clear: both<br/>';
+						echo '.col<br/>';
+						echo '	float: left<br/>';
+						echo '	margin-left: ($gutter/2)<br/>';
+						echo '	margin-right: ($gutter/2)<br/>';
+						for ($i=1; $i<=$cols; $i++) {
+						echo '.col' . $i . '<br/>';
+						echo '	width: (' . $i . '*$col)+(' . ($i-1) . '*$gutter)<br/>';
+						}
+					}
+			?></pre>
+		</section>
+
+
 		<footer>
-		
+
 		</footer><!-- /footer -->
 	</div><!--!/#container -->
 
